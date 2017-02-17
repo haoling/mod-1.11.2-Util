@@ -1,4 +1,4 @@
-package eyeq.util.util;
+package eyeq.util.common;
 
 import java.io.File;
 

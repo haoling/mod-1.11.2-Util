@@ -7,8 +7,8 @@ import eyeq.util.client.model.gson.BlockmodelJsonFactory;
 import eyeq.util.client.model.gson.BlockstateJsonFactory;
 import eyeq.util.client.model.gson.ItemmodelJsonFactory;
 import eyeq.util.client.renderer.ResourceLocationFactory;
-import eyeq.util.util.FileUtils;
-import eyeq.util.util.Utils;
+import eyeq.util.file.FileUtils;
+import eyeq.util.common.Utils;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 

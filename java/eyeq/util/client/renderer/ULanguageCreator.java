@@ -1,8 +1,8 @@
 package eyeq.util.client.renderer;
 
 import eyeq.util.client.renderer.block.statemap.LanguageResource;
-import eyeq.util.util.FileUtils;
-import eyeq.util.util.Utils;
+import eyeq.util.file.FileUtils;
+import eyeq.util.common.Utils;
 
 import java.io.File;
 
