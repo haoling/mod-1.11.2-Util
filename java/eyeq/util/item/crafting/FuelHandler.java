@@ -1,4 +1,4 @@
-package eyeq.util.item.smelting;
+package eyeq.util.item.crafting;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

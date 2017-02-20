@@ -2,6 +2,8 @@ package eyeq.util.asm;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import eyeq.util.event.UtilEventHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.DummyModContainer;
 import net.minecraftforge.fml.common.LoadController;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -19,7 +21,7 @@ public class UtilContainer extends DummyModContainer {
         meta.modId = MOD_ID;
         meta.name = "Util";
         meta.description = "前提";
-        meta.version = "1.0";
+        meta.version = "1.1";
         meta.authorList = Collections.singletonList("eyeq");
         meta.credits = "";
     }
@@ -32,6 +34,6 @@ public class UtilContainer extends DummyModContainer {
 
     @Subscribe
     public void preInit(FMLPreInitializationEvent event) {
-        //MinecraftForge.EVENT_BUS.register(new UtilEventHandler());
+        MinecraftForge.EVENT_BUS.register(new UtilEventHandler());
     }
 }
