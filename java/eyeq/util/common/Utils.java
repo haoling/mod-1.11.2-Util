@@ -1,8 +1,12 @@
 package eyeq.util.common;
 
+import net.minecraftforge.fml.common.eventhandler.EventBus;
+
 import java.io.File;
 
 public class Utils {
+    public static final EventBus EVENT_BUS = new EventBus();
+
     private static final boolean isDepelopment;
 
     static {

@@ -10,11 +10,124 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UOreDictionary {
+    public static final String OREDICT_LOG = "logWood";
+    public static final String OREDICT_PLANKS = "plankWood";
+    public static final String OREDICT_WOODEN_SLAB = "slabWood";
+    public static final String OREDICT_WOODEN_STAIRS = "stairWood";
+    public static final String OREDICT_STICK = "stickWood";
+    public static final String OREDICT_SAPLING = "treeSapling";
+    public static final String OREDICT_LEAVES = "treeLeaves";
+    public static final String OREDICT_VINE = "vine";
+
+    public static final String OREDICT_GOLD_ORE = "oreGold";
+    public static final String OREDICT_IRON_ORE = "oreIron";
+    public static final String OREDICT_LAPIS_ORE = "oreLapis";
+    public static final String OREDICT_DIAMOND_ORE = "oreDiamond";
+    public static final String OREDICT_REDSTONE_ORE = "oreRedstone";
+    public static final String OREDICT_EMERALD_ORE = "oreEmerald";
+    public static final String OREDICT_QUARTZ_ORE = "oreQuartz";
+    public static final String OREDICT_COAL_ORE = "oreCoal";
+
+    public static final String OREDICT_IRON_INGOT = "ingotIron";
+    public static final String OREDICT_GOLD_INGOT = "ingotGold";
+    public static final String OREDICT_BRICK = "ingotBrick";
+    public static final String OREDICT_NETHERBRICK = "ingotBrickNether";
+    public static final String OREDICT_IRON_NUGGET = "nuggetIron";
+    public static final String OREDICT_GOLD_NUGGET = "nuggetGold";
+
+    public static final String OREDICT_DIAMOND = "gemDiamond";
+    public static final String OREDICT_EMERALD = "gemEmerald";
+    public static final String OREDICT_QUARTZ = "gemQuartz";
+    public static final String OREDICT_PRISMARINE_SHARD = "gemPrismarine";
+    public static final String OREDICT_PRISMARINE_CRYSTALS = "dustPrismarine";
+    public static final String OREDICT_REDSTONE = "dustRedstone";
+    public static final String OREDICT_GLOWSTONE_DUST = "dustGlowstone";
+    public static final String OREDICT_LAPIS = "gemLapis";
+
+    public static final String OREDICT_GOLD_BLOCK = "blockGold";
+    public static final String OREDICT_IRON_BLOCK = "blockIron";
+    public static final String OREDICT_LAPIS_BLOCK = "blockLapis";
+    public static final String OREDICT_DIAMOND_BLOCK = "blockDiamond";
+    public static final String OREDICT_REDSTONE_BLOCK = "blockRedstone";
+    public static final String OREDICT_EMERALD_BLOCK = "blockEmerald";
+    public static final String OREDICT_QUARTZ_BLOCK = "blockQuartz";
+    public static final String OREDICT_COAL_BLOCK = "blockCoal";
+    public static final String OREDICT_CHARCOAL_BLOCK = "blockCharcoal";
+
+    public static final String OREDICT_WHEAT = "cropWheat";
+    public static final String OREDICT_POTATO = "cropPotato";
+    public static final String OREDICT_CARROT = "cropCarrot";
+    public static final String OREDICT_NETHER_WART = "cropNetherWart";
+    public static final String OREDICT_REEDS = "sugarcane";
+    public static final String OREDICT_CACTUS = "blockCactus";
+
+    public static final String OREDICT_DYE = "dye";
+    public static final String OREDICT_PAPER = "paper";
+
+    public static final String OREDICT_SLIME_BALL = "slimeball";
+    public static final String OREDICT_ENDER_PEARL = "enderpearl";
+    public static final String OREDICT_BONE = "bone";
+    public static final String OREDICT_GUNPOWDER = "gunpowder";
+    public static final String OREDICT_STRING = "string";
+    public static final String OREDICT_NETHER_STAR = "netherStar";
+    public static final String OREDICT_LEATHER = "leather";
+    public static final String OREDICT_FEATHER = "feather";
+    public static final String OREDICT_EGG = "egg";
+
+    public static final String OREDICT_RECORD = "record";
+
+    public static final String OREDICT_DIRT = "dirt";
+    public static final String OREDICT_GRASS = "grass";
+    public static final String OREDICT_STONE = "stone";
+    public static final String OREDICT_COBBLESTONE = "cobblestone";
+    public static final String OREDICT_GRAVEL = "gravel";
+    public static final String OREDICT_SAND = "sand";
+    public static final String OREDICT_SANDSTONE = "sandstone";
+    public static final String OREDICT_NETHERRACK = "netherrack";
+    public static final String OREDICT_OBSIDIAN = "obsidian";
+    public static final String OREDICT_GLOWSTONE = "glowstone";
+    public static final String OREDICT_END_STONE = "endstone";
+    public static final String OREDICT_TORCH = "torch";
+    public static final String OREDICT_CRAFTING_TABLE = "workbench";
+    public static final String OREDICT_SLIME_BLOCK = "blockSlime";
+    public static final String OREDICT_PRISMARINE = "blockPrismarine";
+    public static final String OREDICT_PRISMARINE_BRICK = "blockPrismarineBrick";
+    public static final String OREDICT_PRISMARINE_DARK = "blockPrismarineDark";
+    public static final String OREDICT_STONE_GRANITE = "stoneGranite";
+    public static final String OREDICT_STONE_POLISHED_GRANITE = "stoneGranitePolished";
+    public static final String OREDICT_STONE_DIORITE = "stoneDiorite";
+    public static final String OREDICT_STONE_POLISHED_DIORITE = "stoneDioritePolished";
+    public static final String OREDICT_STONE_ANDESITE = "stoneAndesite";
+    public static final String OREDICT_STONE_POLISHED_ANDESITE = "stoneAndesitePolished";
+    public static final String OREDICT_COLORLESS_GLASS = "blockGlassColorless";
+    public static final String OREDICT_GLASS = "blockGlass";
+    public static final String OREDICT_COLORLESS_GLASS_PANE = "paneGlassColorless";
+    public static final String OREDICT_GLASS_PANE = "paneGlass";
+
+    public static final String OREDICT_CHEST = "chest";
+    public static final String OREDICT_WODDEN_CHEST = "chestWood";
+    public static final String OREDICT_ENDER_CHEST = "chestEnder";
+    public static final String OREDICT_TRAPPED_CHEST = "chestTrapped";
+
+    public static final String OREDICT_MILK = "milk";
+    public static final String OREDICT_GOLDEN_FOOD = "foodGold";
+    public static final String OREDICT_COOKED = "cooked";
+    public static final String OREDICT_COOKED_MEAT = "cookedMeat";
+    public static final String OREDICT_COOKED_FISH = "cookedFish";
+    public static final String OREDICT_SWEET = "sweet";
+    public static final String OREDICT_FISH = "fish";
+    public static final String OREDICT_MEAT = "meat";
+    public static final String OREDICT_GRAIN = "grain";
+    public static final String OREDICT_FRUIT = "fruit";
+    public static final String OREDICT_VEGETABLE = "vegetable";
+    public static final String OREDICT_MUSHROOM = "mushroom";
+    public static final String OREDICT_FLOWER = "flower";
+    public static final String OREDICT_STONE_IGNEOUS = "stoneIgneous";
+    public static final String OREDICT_STONE_IGNEOUS_POLISHED = "stoneIgneousPolished";
+
     static {
         registerOre(CategoryTypes.MILK, "bucket", Items.MILK_BUCKET);
         registerOre(CategoryTypes.PREFIX_CROP, "beetroot", Items.BEETROOT);

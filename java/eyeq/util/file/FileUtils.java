@@ -1,5 +1,9 @@
 package eyeq.util.file;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.server.integrated.IntegratedServer;
+import net.minecraftforge.common.config.Configuration;
+
 import java.io.*;
 
 public class FileUtils {
@@ -16,5 +20,16 @@ public class FileUtils {
         } catch(IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Configuration getSaveConfiguration(String modid) {
+        IntegratedServer server = Minecraft.getMinecraft().getIntegratedServer();
+        if(server == null) {
+            return null;
+        }
+        String dir = server.getFolderName();
+        String name = modid + ".data";
+        File file = new File(dir + "/" + name);
+        return new Configuration(file);
     }
 }

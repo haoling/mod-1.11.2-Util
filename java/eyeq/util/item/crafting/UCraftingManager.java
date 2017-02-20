@@ -2,7 +2,6 @@ package eyeq.util.item.crafting;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import eyeq.util.oredict.CategoryTypes;
 import eyeq.util.oredict.UOreDictionary;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -70,23 +69,23 @@ public class UCraftingManager {
     }
 
     public static ShapedOreRecipe getRecipeAxe(ItemStack output, Object material) {
-        return getRecipeAxe(output, material, CategoryTypes.OREDICT_STICK);
+        return getRecipeAxe(output, material, UOreDictionary.OREDICT_STICK);
     }
 
     public static ShapedOreRecipe getRecipePickaxe(ItemStack output, Object material) {
-        return getRecipePickaxe(output, material, CategoryTypes.OREDICT_STICK);
+        return getRecipePickaxe(output, material, UOreDictionary.OREDICT_STICK);
     }
 
     public static ShapedOreRecipe getRecipeSpade(ItemStack output, Object material) {
-        return getRecipeSpade(output, material, CategoryTypes.OREDICT_STICK);
+        return getRecipeSpade(output, material, UOreDictionary.OREDICT_STICK);
     }
 
     public static ShapedOreRecipe getRecipeHoe(ItemStack output, Object material) {
-        return getRecipeHoe(output, material, CategoryTypes.OREDICT_STICK);
+        return getRecipeHoe(output, material, UOreDictionary.OREDICT_STICK);
     }
 
     public static ShapedOreRecipe getRecipeSword(ItemStack output, Object material) {
-        return getRecipeSword(output, material, CategoryTypes.OREDICT_STICK);
+        return getRecipeSword(output, material, UOreDictionary.OREDICT_STICK);
     }
 
     public static ShapedRecipes getRecipe(ItemStack stack, Object... recipeComponents) {
