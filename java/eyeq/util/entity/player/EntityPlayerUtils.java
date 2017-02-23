@@ -26,17 +26,17 @@ public class EntityPlayerUtils {
             return EnumActionResult.PASS;
         }
 
+        ItemStack held = player.getHeldItem(hand);
+        player.setHeldItem(hand, itemStack);
+
         float x = (float) (vec.xCoord - pos.getX());
         float y = (float) (vec.yCoord - pos.getY());
         float z = (float) (vec.zCoord - pos.getZ());
         IBlockState state = world.getBlockState(pos);
         if(!player.isSneaking()) {
-            ItemStack held = player.getHeldItem(hand);
-
-            player.setHeldItem(hand, itemStack);
             boolean isActivated = state.getBlock().onBlockActivated(world, pos, state, player, hand, facing, x, y, z);
-            player.setHeldItem(hand, held);
             if(isActivated) {
+                player.setHeldItem(hand, held);
                 return EnumActionResult.SUCCESS;
             }
         }
@@ -44,9 +44,11 @@ public class EntityPlayerUtils {
         if(item instanceof ItemBlock) {
             ItemBlock itemBlock = (ItemBlock) item;
             if(!itemBlock.canPlaceBlockOnSide(world, pos, facing, player, itemStack)) {
+                player.setHeldItem(hand, held);
                 return EnumActionResult.FAIL;
             }
             if(itemBlock.getBlock() instanceof BlockCommandBlock && !player.canUseCommand(2, "")) {
+                player.setHeldItem(hand, held);
                 return EnumActionResult.FAIL;
             }
         }
@@ -62,6 +64,7 @@ public class EntityPlayerUtils {
                 net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, itemStack, hand);
             }
         }
+        player.setHeldItem(hand, held);
         return result;
     }
 }

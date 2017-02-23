@@ -68,6 +68,16 @@ public class UCraftingManager {
                 'X', material, 'Y', stick);
     }
 
+    public static ShapedOreRecipe getRecipeCompress(ItemStack output, Object input) {
+        return new ShapedOreRecipe(output, "XXX", "XXX", "XXX",
+                'X', input);
+    }
+
+    public static ShapedOreRecipe getRecipeDecompress(ItemStack output, Object input) {
+        return new ShapedOreRecipe(output, "X",
+                'X', input);
+    }
+
     public static ShapedOreRecipe getRecipeAxe(ItemStack output, Object material) {
         return getRecipeAxe(output, material, UOreDictionary.OREDICT_STICK);
     }
@@ -86,6 +96,22 @@ public class UCraftingManager {
 
     public static ShapedOreRecipe getRecipeSword(ItemStack output, Object material) {
         return getRecipeSword(output, material, UOreDictionary.OREDICT_STICK);
+    }
+
+    public static ShapedOreRecipe getRecipeCompress(Block output, Object input) {
+        return getRecipeCompress(new ItemStack(output), input);
+    }
+
+    public static ShapedOreRecipe getRecipeCompress(Item output, Object input) {
+        return getRecipeCompress(new ItemStack(output), input);
+    }
+
+    public static ShapedOreRecipe getRecipeDecompress(Block output, Object input) {
+        return getRecipeDecompress(new ItemStack(output, 9), input);
+    }
+
+    public static ShapedOreRecipe getRecipeDecompress(Item output, Object input) {
+        return getRecipeDecompress(new ItemStack(output, 9), input);
     }
 
     public static ShapedRecipes getRecipe(ItemStack stack, Object... recipeComponents) {

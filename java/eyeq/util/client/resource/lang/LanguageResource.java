@@ -1,5 +1,4 @@
-package eyeq.util.client.renderer.block.statemap;
-
+package eyeq.util.client.resource.lang;
 
 import java.util.HashMap;
 import java.util.Map;

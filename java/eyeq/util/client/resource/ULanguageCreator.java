@@ -1,13 +1,17 @@
-package eyeq.util.client.renderer;
+package eyeq.util.client.resource;
 
-import eyeq.util.client.renderer.block.statemap.LanguageResource;
+import eyeq.util.client.resource.lang.LanguageResource;
+import eyeq.util.client.resource.lang.LanguageResourceManager;
 import eyeq.util.file.FileUtils;
 import eyeq.util.common.Utils;
 
 import java.io.File;
 
 public class ULanguageCreator {
-    public static void createLanguage(File project, String modid, ULanguageResourceManager manager) {
+    public static void createLanguage(File project, String modid, LanguageResourceManager manager) {
+        if(!Utils.isDevelopment()) {
+            return;
+        }
         for(LanguageResource resource : manager.getLanguageResources()) {
             createLanguage(project, modid, resource);
         }
@@ -19,11 +23,7 @@ public class ULanguageCreator {
         }
         String language = resource.getLanguage();
         String text = resource.toString();
-        File dir = new File(project, "src/main/resources/assets/" + modid + "/lang/");
-        createLanguage(dir, language, text);
-    }
-
-    private static void createLanguage(File dir, String name, String lang) {
-        FileUtils.write(dir, name + ".lang", lang);
+        File dir = new File(project, FileUtils.ASSETS + modid + "/lang/");
+        FileUtils.write(dir, language + ".lang", text);
     }
 }

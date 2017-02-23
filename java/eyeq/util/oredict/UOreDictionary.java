@@ -209,4 +209,13 @@ public class UOreDictionary {
     public static List<ItemStack> getOres(CategoryType category, String name, boolean alwaysCreateEntry) {
         return OreDictionary.getOres(category.getDictionaryName(name), alwaysCreateEntry);
     }
+
+    public static boolean contains(ItemStack itemStack, String ore) {
+        for(int i : OreDictionary.getOreIDs(itemStack)) {
+            if(ore.equals(OreDictionary.getOreName(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

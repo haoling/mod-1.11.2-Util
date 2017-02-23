@@ -1,15 +1,17 @@
-package eyeq.util.client.renderer;
+package eyeq.util.client.resource.lang;
 
-import eyeq.util.client.renderer.block.statemap.LanguageResource;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ULanguageResourceManager {
+public class LanguageResourceManager {
     public static final String EN_US = "en_US";
     public static final String JA_JP = "ja_JP";
 
@@ -39,6 +41,20 @@ public class ULanguageResourceManager {
     public void register(String language, Item item, String value) {
         String name = item.getUnlocalizedName() + ".name";
         register(language, name, value);
+    }
+
+    public void register(String language, Class<? extends Entity> entityClass, String value) {
+        String name = null;
+        for(EntityEntry entity : ForgeRegistries.ENTITIES) {
+            if(entity.getEntityClass().equals(entityClass)) {
+                name = entity.getName();
+                break;
+            }
+        }
+        if(name != null) {
+            name = "entity." + name + ".name";
+            register(language, name, value);
+        }
     }
 
     public Collection<LanguageResource> getLanguageResources() {

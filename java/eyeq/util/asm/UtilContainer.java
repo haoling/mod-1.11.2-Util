@@ -21,7 +21,7 @@ public class UtilContainer extends DummyModContainer {
         meta.modId = MOD_ID;
         meta.name = "Util";
         meta.description = "前提";
-        meta.version = "1.1";
+        meta.version = "1.2";
         meta.authorList = Collections.singletonList("eyeq");
         meta.credits = "";
     }
