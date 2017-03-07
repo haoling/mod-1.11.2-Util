@@ -8,7 +8,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import java.util.List;
 
@@ -176,6 +178,9 @@ public class UOreDictionary {
         registerOre(CategoryTypes.PREFIX_FLOWER, "magenta", new ItemStack(Blocks.DOUBLE_PLANT, 1, BlockDoublePlant.EnumPlantType.SYRINGA.getMeta()));
         registerOre(CategoryTypes.PREFIX_FLOWER, "red", new ItemStack(Blocks.DOUBLE_PLANT, 1, BlockDoublePlant.EnumPlantType.ROSE.getMeta()));
         registerOre(CategoryTypes.PREFIX_FLOWER, "pink", new ItemStack(Blocks.DOUBLE_PLANT, 1, BlockDoublePlant.EnumPlantType.PAEONIA.getMeta()));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CAKE), "MMM", "SES", "WWW",
+                'M', CategoryTypes.MILK.getDictionaryName(""), 'S', Items.SUGAR, 'W', Items.WHEAT, 'E', Items.EGG));
     }
 
     public static void registerOre(CategoryType category, String name, Item ore) {
@@ -211,8 +216,12 @@ public class UOreDictionary {
     }
 
     public static boolean contains(ItemStack itemStack, String ore) {
+        if(itemStack.isEmpty()) {
+            return false;
+        }
+        int n = OreDictionary.getOreID(ore);
         for(int i : OreDictionary.getOreIDs(itemStack)) {
-            if(ore.equals(OreDictionary.getOreName(i))) {
+            if(n == i) {
                 return true;
             }
         }

@@ -24,4 +24,15 @@ public class BiomeUtils {
         }
         return list;
     }
+
+    public static List<Biome> getBiomes() {
+        List<Biome> list = new ArrayList<>();
+        for(Biome biome : Biome.REGISTRY) {
+            if(biome == null) {
+                continue;
+            }
+            list.add(biome);
+        }
+        return list;
+    }
 }

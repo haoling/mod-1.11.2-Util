@@ -19,17 +19,34 @@ public class UModelCreator {
     public static void createBlockstateJson(File project, Block block) {
         createBlockstateJson(project, block.getRegistryName());
     }
+    public static void createBlockstateJson(File project, Block block, String texture) {
+        createBlockstateJson(project, block.getRegistryName(), texture);
+    }
+
+    public static void createBlockOreJson(File project, Block block) {
+        createBlockOreJson(project, block.getRegistryName());
+    }
 
     public static void createItemJson(File project, Item item, ItemmodelJsonFactory.ItemmodelParent parent) {
         createItemJson(project, item.getRegistryName(), parent);
     }
+
+
 
     public static void createBlockstateJson(File project, ResourceLocation resource) {
         if(!Utils.isDevelopment()) {
             return;
         }
         createBlockJson(project, resource);
-        createBlockstateJson(resource, project, BlockstateJsonFactory.createNormalBlockstateJson(resource.getResourcePath()));
+        createBlockstateJson(resource, project, BlockstateJsonFactory.createNormalBlockstateJson(resource.toString()));
+    }
+
+    public static void createBlockstateJson(File project, ResourceLocation resource, String texture) {
+        if(!Utils.isDevelopment()) {
+            return;
+        }
+        createBlockJson(project, resource, texture);
+        createBlockstateJson(resource, project, BlockstateJsonFactory.createNormalBlockstateJson(resource.toString()));
     }
 
     public static void createBlockstateJson(File project, ResourceLocation resource, List<ResourceLocation> meta) {
@@ -39,7 +56,7 @@ public class UModelCreator {
         List<String> list = new ArrayList<>();
         for(ResourceLocation resourceLocation : meta) {
             createBlockJson(project, resourceLocation);
-            list.add(resourceLocation.getResourcePath());
+            list.add(resourceLocation.toString());
         }
         createBlockstateJson(resource, project, BlockstateJsonFactory.createNormalBlockstateJson(list));
     }
@@ -48,7 +65,23 @@ public class UModelCreator {
         if(!Utils.isDevelopment()) {
             return;
         }
-        createBlockmodelJson(project, resource, BlockmodelJsonFactory.createCubeallBlockmodelJson(ResourceLocationFactory.toBlockTexturePath(resource)));
+        createBlockJson(project, resource, ResourceLocationFactory.toBlockTexturePath(resource));
+    }
+
+    public static void createBlockJson(File project, ResourceLocation resource, String texture) {
+        if(!Utils.isDevelopment()) {
+            return;
+        }
+        createBlockmodelJson(project, resource, BlockmodelJsonFactory.createCubeallBlockmodelJson(texture));
+        createItemmodelJson(project, resource, ItemmodelJsonFactory.createItemmodelJson(ResourceLocationFactory.toBlockFilePath(resource)));
+    }
+
+    public static void createBlockOreJson(File project, ResourceLocation resource) {
+        if(!Utils.isDevelopment()) {
+            return;
+        }
+        String texture = ResourceLocationFactory.toBlockTexturePath(resource);
+        createBlockmodelJson(project, resource, BlockmodelJsonFactory.createOneBlockmodelJson("eyeq_util:block/ore", "ore", texture));
         createItemmodelJson(project, resource, ItemmodelJsonFactory.createItemmodelJson(ResourceLocationFactory.toBlockFilePath(resource)));
     }
 
@@ -58,6 +91,8 @@ public class UModelCreator {
         }
         createItemmodelJson(project, resource, parent.create(ResourceLocationFactory.toItemTexturePath(resource)));
     }
+
+
 
     public static void createBlockstateJson(ResourceLocation resource, File project, JsonElement blockstates) {
         if(!Utils.isDevelopment()) {

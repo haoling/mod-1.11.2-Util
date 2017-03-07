@@ -6,16 +6,16 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
 public class ResourceLocationFactory {
-    public static final ResourceLocationFactory MC = new ResourceLocationFactory("minecraft");
+    public static final ResourceLocationFactory mc = new ResourceLocationFactory("minecraft");
 
-    protected final String MOD_ID;
+    protected final String modId;
 
     public ResourceLocationFactory(String modid) {
-        this.MOD_ID = modid;
+        this.modId = modid;
     }
 
     public ResourceLocation createResourceLocation(String name) {
-        return new ResourceLocation(MOD_ID, name);
+        return new ResourceLocation(modId, name);
     }
 
     public ModelResourceLocation createModelResourceLocation(String name) {
@@ -51,19 +51,19 @@ public class ResourceLocationFactory {
     }
 
     public String toBlockFilePath(String fileName) {
-        return toBlockFilePath(MOD_ID, fileName);
+        return toBlockFilePath(modId, fileName);
     }
 
     public String toItemFilePath(String fileName) {
-        return toItemFilePath(MOD_ID, fileName);
+        return toItemFilePath(modId, fileName);
     }
 
     public String toBlockTexturePath(String textureName) {
-        return toBlockTexturePath(MOD_ID, textureName);
+        return toBlockTexturePath(modId, textureName);
     }
 
     public String toItemTexturePath(String textureName) {
-        return toItemTexturePath(MOD_ID, textureName);
+        return toItemTexturePath(modId, textureName);
     }
 
     public static String toBlockFilePath(String modid, String fileName) {

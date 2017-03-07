@@ -1,15 +1,28 @@
 package eyeq.util.client;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiMultiplayer;
+import net.minecraft.client.resources.DefaultPlayerSkin;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.realms.RealmsBridge;
 import net.minecraft.server.integrated.IntegratedServer;
 
 public class MinecraftUtils {
     public static final Minecraft mc = Minecraft.getMinecraft();
+
+    public static String getSkinType(EntityPlayer player) {
+        if(player == null) {
+            return "";
+        }
+        if(player instanceof AbstractClientPlayer) {
+            return ((AbstractClientPlayer) player).getSkinType();
+        }
+        return DefaultPlayerSkin.getSkinType(player.getUniqueID());
+    }
 
     public static EntityPlayerMP getPlayerMP() {
         return getPlayerMP(mc.player);

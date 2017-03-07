@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import eyeq.util.oredict.UOreDictionary;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -14,13 +15,26 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class UCraftingManager {
     static {
         RecipeSorter.register("eyeq_util:shaped_amount", ShapedAmountRecipes.class, RecipeSorter.Category.SHAPED, "after:minecraft:shaped");
+        RecipeSorter.register("eyeq_util:shapeless_potion", ShapelessPotionRecipe.class, RecipeSorter.Category.SHAPELESS, "after:minecraft:shapeless");
+    }
+
+    public static ShapelessOreRecipe getRecipeBottle(ItemStack output, Object input, Object bottle) {
+        int num = output.getCount();
+        List list = new ArrayList();
+        list.add(input);
+        for(int i = 0; i < num; i++) {
+            list.add(bottle);
+        }
+        return new ShapelessOreRecipe(output, list.toArray(new Object[0]));
     }
 
     public static ShapedOreRecipe getRecipeHelmet(ItemStack output, Object material) {
@@ -76,6 +90,10 @@ public class UCraftingManager {
     public static ShapedOreRecipe getRecipeDecompress(ItemStack output, Object input) {
         return new ShapedOreRecipe(output, "X",
                 'X', input);
+    }
+
+    public static ShapelessOreRecipe getRecipeBottle(ItemStack output, Object input) {
+        return getRecipeBottle(output, input, Items.GLASS_BOTTLE);
     }
 
     public static ShapedOreRecipe getRecipeAxe(ItemStack output, Object material) {

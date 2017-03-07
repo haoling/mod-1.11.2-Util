@@ -3,13 +3,20 @@ package eyeq.util.asm;
 import org.objectweb.asm.Type;
 
 public class ClassNames {
+    public static final String DESC_RENDER_LIVING_BASE = "Lnet/minecraft/client/renderer/entity/RenderLivingBase;";
+
     public static final String DESC_BLOCK = "Lnet/minecraft/block/Block;";
     public static final String DESC_I_BLOCK_STATE = "Lnet/minecraft/block/state/IBlockState;";
+
+    public static final String DESC_ENTITY_LIVING_BASE = "Lnet/minecraft/entity/EntityLivingBase;";
     public static final String DESC_ENTITY_PLAYER = "Lnet/minecraft/entity/player/EntityPlayer;";
+
     public static final String DESC_ITEM_STACK = "Lnet/minecraft/item/ItemStack;";
+
     public static final String DESC_ENUM_FACING = "Lnet/minecraft/util/EnumFacing;";
     public static final String DESC_ENUM_HAND = "Lnet/minecraft/util/EnumHand;";
     public static final String DESC_BLOCK_POS = "Lnet/minecraft/util/math/BlockPos;";
+
     public static final String DESC_WORLD = "Lnet/minecraft/world/World;";
 
     public static final String DESC_RANDOM = "Ljava/util/Random;";

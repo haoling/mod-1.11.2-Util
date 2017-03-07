@@ -3,6 +3,7 @@ package eyeq.util.client.resource.lang;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -26,6 +27,11 @@ public class LanguageResourceManager {
             languageMap.put(language, languageResource);
         }
         languageResource.register(key, value);
+    }
+
+    public void register(String language, IAttribute attribute, String value) {
+        String name = "attribute.name." + attribute.getName();
+        register(language, name, value);
     }
 
     public void register(String language, CreativeTabs tab, String value) {

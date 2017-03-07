@@ -14,10 +14,13 @@ public class UtilTransformer implements IClassTransformer {
     public final NeighborChangedMethodTransformer blockDoorNeighborChanged = new NeighborChangedMethodTransformer(BLOCK_DOOR_CLASS_NAME);
     public final NeighborChangedMethodTransformer blockTrapDoorNeighborChanged = new NeighborChangedMethodTransformer(BLOCK_TRAP_DOOR_CLASS_NAME);
     public final NeighborChangedMethodTransformer blockFenceGateNeighborChanged = new NeighborChangedMethodTransformer(BLOCK_FENCE_GATE_CLASS_NAME);
+
     public final OnBlockActivatedMethodTransformer onBlockDoorActivated = new OnBlockActivatedMethodTransformer(BLOCK_DOOR_CLASS_NAME);
     public final OnBlockActivatedMethodTransformer onBlockTrapDoorActivated = new OnBlockActivatedMethodTransformer(BLOCK_TRAP_DOOR_CLASS_NAME);
     public final OnBlockActivatedMethodTransformer onBlockFenceGateActivated = new OnBlockActivatedMethodTransformer(BLOCK_FENCE_GATE_CLASS_NAME);
+
     public final ToggleDoorMethodTransformer toggleDoor = new ToggleDoorMethodTransformer();
+
     public final TryCatchFireMethodTransformer tryCatchFire = new TryCatchFireMethodTransformer();
 
     @Override

@@ -12,7 +12,7 @@ public class ShapedAmountRecipes extends ShapedRecipes {
     }
 
     @Override
-    public boolean matches(InventoryCrafting inputs, World worldIn) {
+    public boolean matches(InventoryCrafting inputs, World world) {
         for(int i = 0; i <= 3 - this.recipeWidth; i++) {
             for(int j = 0; j <= 3 - this.recipeHeight; j++) {
                 if(this.checkMatch(inputs, i, j, true) || this.checkMatch(inputs, i, j, false)) {
