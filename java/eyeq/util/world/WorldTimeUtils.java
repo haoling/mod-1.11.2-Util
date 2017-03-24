@@ -74,10 +74,6 @@ public class WorldTimeUtils {
         return (int) (getWorldTime(world) % SECONDS_IN_MONTH) / SECONDS_IN_WEEK + 1;
     }
 
-    public static Division getDivision(World world) {
-        return Division.getDivisionFromDay(getDay(world));
-    }
-
     // return 1 - 4
     public static int getMonth(World world) {
         return (int) (getWorldTime(world) / SECONDS_IN_MONTH % REAL_MONTHS_IN_YEAR) + 1;
@@ -142,43 +138,12 @@ public class WorldTimeUtils {
         }
     }
 
-    public enum Division {
-        EARLY("early"),
-        MIDDLE("middle"),
-        LATE("late");
-
-        private final String name;
-
-        Division(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        @SideOnly(Side.CLIENT)
-        public String getTranslatedName() {
-            return "division." + this.getName();
-        }
-
-        public static Division getDivisionFromDay(int day) {
-            --day;
-            day /= REAL_DAYS_IN_MONTH;
-            for(Division division : Division.values()) {
-                if(division.ordinal() == day) {
-                    return division;
-                }
-            }
-            return null;
-        }
-    }
-
     public enum Season {
         SPRING("spring"),
         SUMMER("summer"),
         AUTUMN("autumn"),
-        WINTER("winter"), ;
+        WINTER("winter")
+        ;
 
         private final String name;
 

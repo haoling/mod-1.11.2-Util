@@ -5,21 +5,25 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.server.SPacketEffect;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
-
-import java.util.Random;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 public class EntityPlayerUtils {
+    public static final EntityPlayerPassenger PASSENGER = new EntityPlayerPassenger();
+
     public static EnumActionResult onItemUse(EntityPlayer player, World world, ItemStack itemStack, BlockPos pos, EnumFacing facing, Vec3d vec, EnumHand hand) {
         if(player.isSpectator()) {
             return EnumActionResult.PASS;
@@ -88,5 +92,17 @@ public class EntityPlayerUtils {
             WorldUtils.playSoundBlocks(world, player, pos, soundtype);
         }
         return true;
+    }
+
+    public static Entity changeDimension(EntityPlayerMP player, int dimensionId, Teleporter teleporter, BlockPos spawnPos) {
+        setInvulnerableDimensionChange(player);
+        player.mcServer.getPlayerList().transferPlayerToDimension(player, dimensionId, teleporter);
+        player.moveToBlockPosAndAngles(spawnPos, player.rotationYaw, player.rotationPitch);
+        player.connection.sendPacket(new SPacketEffect(1032, BlockPos.ORIGIN, 0, false));
+        return player;
+    }
+
+    public static void setInvulnerableDimensionChange(EntityPlayerMP player) {
+        ObfuscationReflectionHelper.setPrivateValue(EntityPlayerMP.class, player, true, "invulnerableDimensionChange", "field_184851_cj");
     }
 }

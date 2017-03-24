@@ -1,7 +1,5 @@
 package eyeq.util.item.crafting;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import eyeq.util.oredict.UOreDictionary;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
@@ -18,6 +16,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ public class UCraftingManager {
 
     public static ShapelessOreRecipe getRecipeBottle(ItemStack output, Object input, Object bottle) {
         int num = output.getCount();
-        List list = new ArrayList();
+        List<Object> list = new ArrayList<>();
         list.add(input);
         for(int i = 0; i < num; i++) {
             list.add(bottle);
@@ -80,6 +79,11 @@ public class UCraftingManager {
     public static ShapedOreRecipe getRecipeSword(ItemStack output, Object material, Object stick) {
         return new ShapedOreRecipe(output, "X", "X", "Y",
                 'X', material, 'Y', stick);
+    }
+
+    public static ShapedOreRecipe getRecipeStairs(ItemStack output, Object input) {
+        return new ShapedOreRecipe(output, "X  ", "XX ", "XXX",
+                'X', input);
     }
 
     public static ShapedOreRecipe getRecipeCompress(ItemStack output, Object input) {
@@ -139,7 +143,7 @@ public class UCraftingManager {
     }
 
     public static ShapelessRecipes getShapelessRecipe(ItemStack stack, Object... recipeComponents) {
-        List list = Lists.newArrayList();
+        List list = new ArrayList();
         for(Object obj : recipeComponents) {
             ItemStack input = null;
             if(obj instanceof ItemStack) {
@@ -180,7 +184,7 @@ public class UCraftingManager {
             height = i;
         }
 
-        Map map = Maps.newHashMap();
+        Map<Character, ItemStack> map = new HashMap<>();
         for(; i < recipeComponents.length; i++) {
             Character character = (Character) recipeComponents[i++];
             ItemStack input = null;
@@ -198,7 +202,7 @@ public class UCraftingManager {
         for(int j = 0; j < width * height; j++) {
             char c0 = s.charAt(j);
             if(map.containsKey(c0)) {
-                inputs[j] = ((ItemStack) map.get(c0)).copy();
+                inputs[j] = map.get(c0).copy();
             } else {
                 inputs[j] = null;
             }

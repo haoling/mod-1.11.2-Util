@@ -1,7 +1,6 @@
 package eyeq.util.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -9,9 +8,12 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -92,6 +94,16 @@ public abstract class UBlockDummy extends Block {
         }
         return state;
     }
+
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+        IBlockState original = getOriginalBlock().getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+        IBlockState state = getDefaultState();
+        for(IProperty property : original.getPropertyKeys()) {
+            state = state.withProperty(property, original.getValue(property));
+        }
+        return state;
+    }
+
 
     @Override
     @SideOnly(Side.CLIENT)

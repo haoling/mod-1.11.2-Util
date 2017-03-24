@@ -1,11 +1,14 @@
 package eyeq.util.event;
 
+import eyeq.util.block.BlockUtils;
 import eyeq.util.client.renderer.EntityRendererUtils;
 import eyeq.util.item.IItemHasReach;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -58,7 +61,11 @@ public class UtilEventHandler {
 
     @SubscribeEvent
     public void onPlace(BlockEvent.PlaceEvent event) {
-        // UBlock.openGate(event.world, event.pos, event.state);
-        // UEntity.summons(event.world, event.pos, event.state);
+        World world = event.getWorld();
+        BlockPos pos = event.getPos();
+        IBlockState state = event.getState();
+
+        BlockUtils.OPEN_PORTAL_MANAGER.tryOpen(world, pos, state);
+        BlockUtils.SUMMON_ENTITY_MANAGER.trySummon(world, pos, state);
     }
 }

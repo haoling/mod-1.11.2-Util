@@ -23,6 +23,10 @@ public class UModelCreator {
         createBlockstateJson(project, block.getRegistryName(), texture);
     }
 
+    public static void createBlockstateJson(File project, Block block, JsonElement blockmodel) {
+        createBlockstateJson(project, block.getRegistryName(), blockmodel);
+    }
+
     public static void createBlockOreJson(File project, Block block) {
         createBlockOreJson(project, block.getRegistryName());
     }
@@ -49,6 +53,14 @@ public class UModelCreator {
         createBlockstateJson(resource, project, BlockstateJsonFactory.createNormalBlockstateJson(resource.toString()));
     }
 
+    public static void createBlockstateJson(File project, ResourceLocation resource, JsonElement blockmodel) {
+        if(!Utils.isDevelopment()) {
+            return;
+        }
+        createBlockJson(project, resource, blockmodel);
+        createBlockstateJson(resource, project, BlockstateJsonFactory.createNormalBlockstateJson(resource.toString()));
+    }
+
     public static void createBlockstateJson(File project, ResourceLocation resource, List<ResourceLocation> meta) {
         if(!Utils.isDevelopment()) {
             return;
@@ -72,7 +84,14 @@ public class UModelCreator {
         if(!Utils.isDevelopment()) {
             return;
         }
-        createBlockmodelJson(project, resource, BlockmodelJsonFactory.createCubeallBlockmodelJson(texture));
+        createBlockJson(project, resource, BlockmodelJsonFactory.createCubeallBlockmodelJson(texture));
+    }
+
+    public static void createBlockJson(File project, ResourceLocation resource, JsonElement blockmodel) {
+        if(!Utils.isDevelopment()) {
+            return;
+        }
+        createBlockmodelJson(project, resource, blockmodel);
         createItemmodelJson(project, resource, ItemmodelJsonFactory.createItemmodelJson(ResourceLocationFactory.toBlockFilePath(resource)));
     }
 
@@ -89,7 +108,14 @@ public class UModelCreator {
         if(!Utils.isDevelopment()) {
             return;
         }
-        createItemmodelJson(project, resource, parent.create(ResourceLocationFactory.toItemTexturePath(resource)));
+        createItemJson(project, resource, parent, resource);
+    }
+
+    public static void createItemJson(File project, ResourceLocation resource, ItemmodelJsonFactory.ItemmodelParent parent, ResourceLocation texture) {
+        if(!Utils.isDevelopment()) {
+            return;
+        }
+        createItemmodelJson(project, resource, parent.create(ResourceLocationFactory.toItemTexturePath(texture)));
     }
 
 

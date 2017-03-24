@@ -39,10 +39,10 @@ public class CategoryTypes {
     public static final CategoryType TORCH = new CategoryType(UOreDictionary.OREDICT_TORCH);
     public static final CategoryType WORKBENCH = new CategoryType(UOreDictionary.OREDICT_CRAFTING_TABLE);
     public static final CategoryType CHEST = new CategoryType(UOreDictionary.OREDICT_CHEST);
-    public static final CategoryType BLOCK_GRASS = new CategoryType(UOreDictionary.OREDICT_GLASS);
-    public static final CategoryType BLOCK_GRASS_COLORLESS = new CategoryType(BLOCK_GRASS, UOreDictionary.OREDICT_COLORLESS_GLASS);
-    public static final CategoryType PANE_GRASS = new CategoryType(UOreDictionary.OREDICT_GLASS_PANE);
-    public static final CategoryType PANE_GRASS_COLORLESS = new CategoryType(PANE_GRASS, UOreDictionary.OREDICT_COLORLESS_GLASS_PANE);
+    public static final CategoryType BLOCK_GLASS = new CategoryType(UOreDictionary.OREDICT_GLASS);
+    public static final CategoryType BLOCK_GLASS_COLORLESS = new CategoryType(BLOCK_GLASS, UOreDictionary.OREDICT_COLORLESS_GLASS);
+    public static final CategoryType PANE_GLASS = new CategoryType(UOreDictionary.OREDICT_GLASS_PANE);
+    public static final CategoryType PANE_GLASS_COLORLESS = new CategoryType(PANE_GLASS, UOreDictionary.OREDICT_COLORLESS_GLASS_PANE);
     // prefixes
     public static final CategoryType PREFIX_ORE = new PreFixCategoryType("ore");
     public static final CategoryType PREFIX_INGOT = new PreFixCategoryType("ingot");
@@ -56,8 +56,8 @@ public class CategoryTypes {
     public static final CategoryType PREFIX_CHEST = new PreFixCategoryType(CHEST);
     // colored
     public static final CategoryType PREFIX_DYE = new PreFixCategoryType(DYE);
-    public static final CategoryType PREFIX_BLOCK_GRASS = new PreFixCategoryType(BLOCK_GRASS);
-    public static final CategoryType PREFIX_PANE_GRASS = new PreFixCategoryType(PANE_GRASS);
+    public static final CategoryType PREFIX_BLOCK_GLASS = new PreFixCategoryType(BLOCK_GLASS);
+    public static final CategoryType PREFIX_PANE_GLASS = new PreFixCategoryType(PANE_GLASS);
     // not forge
     public static final CategoryType MILK = new CategoryType(UOreDictionary.OREDICT_MILK);
     public static final CategoryType FOOD_GOLD = new CategoryType(UOreDictionary.OREDICT_GOLDEN_FOOD);

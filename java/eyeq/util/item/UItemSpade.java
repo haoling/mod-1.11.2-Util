@@ -3,7 +3,7 @@ package eyeq.util.item;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
@@ -16,18 +16,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UItemPickaxe extends ItemPickaxe implements IItemEnchanted, IItemUsePotion {
+public class UItemSpade extends ItemSpade implements IItemEnchanted, IItemUsePotion {
     protected List<EnchantmentData> enchants = new ArrayList<>();
 
     private ClearPotionType clear = ClearPotionType.NONE;
     private Map<PotionEffect, Float> potions = new HashMap<>();
     private int useItemDamage = 1;
 
-    public UItemPickaxe(ToolMaterial material) {
+    public UItemSpade(ToolMaterial material) {
         super(material);
     }
 
-    public UItemPickaxe(ToolMaterial material, float damage, float speed) {
+    public UItemSpade(ToolMaterial material, float damage, float speed) {
         this(material);
         this.damageVsEntity = damage + material.getDamageVsEntity();
         this.attackSpeed = speed;
@@ -56,13 +56,13 @@ public class UItemPickaxe extends ItemPickaxe implements IItemEnchanted, IItemUs
     }
 
     @Override
-    public UItemPickaxe setEnchantmentData(EnchantmentData enchant) {
+    public UItemSpade setEnchantmentData(EnchantmentData enchant) {
         enchants.clear();
         return addEnchantmentData(enchant);
     }
 
     @Override
-    public UItemPickaxe addEnchantmentData(EnchantmentData enchant) {
+    public UItemSpade addEnchantmentData(EnchantmentData enchant) {
         enchants.add(enchant);
         return this;
     }
@@ -76,25 +76,25 @@ public class UItemPickaxe extends ItemPickaxe implements IItemEnchanted, IItemUs
     }
 
     @Override
-    public UItemPickaxe setClearPotionType(ClearPotionType type) {
+    public UItemSpade setClearPotionType(ClearPotionType type) {
         clear = type;
         return this;
     }
 
     @Override
-    public UItemPickaxe setPotionEffect(PotionEffect potion, float probability) {
+    public UItemSpade setPotionEffect(PotionEffect potion, float probability) {
         potions.clear();
         return addPotionEffect(potion, probability);
     }
 
     @Override
-    public UItemPickaxe addPotionEffect(PotionEffect potion, float probability) {
+    public UItemSpade addPotionEffect(PotionEffect potion, float probability) {
         potions.put(potion, probability);
         return this;
     }
 
     @Override
-    public UItemPickaxe setUseItemDamage(int damage) {
+    public UItemSpade setUseItemDamage(int damage) {
         this.useItemDamage = damage;
         return this;
     }
