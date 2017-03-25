@@ -131,6 +131,15 @@ public class UOreDictionary {
     public static final String OREDICT_STONE_IGNEOUS_POLISHED = "stoneIgneousPolished";
 
     static {
+        // なぜかLightGrayで登録されてる
+        String silver = "Silver";
+        ItemStack dye = new ItemStack(Items.DYE, 1, EnumDyeColor.SILVER.getDyeDamage());
+        ItemStack block = new ItemStack(Blocks.STAINED_GLASS, 1, EnumDyeColor.SILVER.getMetadata());
+        ItemStack pane = new ItemStack(Blocks.STAINED_GLASS_PANE, 1, EnumDyeColor.SILVER.getMetadata());
+        OreDictionary.registerOre("dye" + silver, dye);
+        OreDictionary.registerOre("blockGlass" + silver, block);
+        OreDictionary.registerOre("paneGlass" + silver, pane);
+
         registerOre(CategoryTypes.MILK, "bucket", Items.MILK_BUCKET);
         registerOre(CategoryTypes.PREFIX_CROP, "beetroot", Items.BEETROOT);
         registerOre(CategoryTypes.COOKED, "bread", Items.BREAD);
@@ -147,7 +156,7 @@ public class UOreDictionary {
         registerOre(CategoryTypes.SWEET, "pumpkinPie", Items.PUMPKIN_PIE);
         registerOre(CategoryTypes.SWEET, "cake", Items.CAKE);
         registerOreAll(CategoryTypes.FISH, "fish", Items.FISH);
-    	
+
         registerOre(CategoryTypes.PREFIX_FOOD_GOLD, "apple", new ItemStack(Items.GOLDEN_APPLE, 1, 1));
         registerOre(CategoryTypes.PREFIX_MEAT, "cow", Items.BEEF);
         registerOre(CategoryTypes.PREFIX_MEAT, "pig", Items.PORKCHOP);
